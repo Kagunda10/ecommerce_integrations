@@ -121,6 +121,7 @@ def import_all_products():
 	frappe.enqueue(
 		queue_sync_all_products,
 		queue="long",
+		timeout=7200
 		job_name=SYNC_JOB_NAME,
 		key=REALTIME_KEY,
 	)
