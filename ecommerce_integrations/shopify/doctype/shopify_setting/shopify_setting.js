@@ -35,6 +35,22 @@ frappe.ui.form.on("Shopify Setting", {
 			});
 		});
 		frm.trigger("setup_queries");
+
+		if (frm.doc.enable_sync && frm.doc.enable_bulk_import) {
+			frm.add_custom_button(__('Import Products in Bulk'), function () {
+				frappe.call({
+					method: 'ecommerce_integrations.shopify.jobs.enqueue_bulk_product_import',
+					callback: function (r) {
+						if (!r.exc) {
+							frappe.show_alert({
+								message: __('Bulk import has been queued. It may take up to 10 days to complete.'),
+								indicator: 'green'
+							});
+						}
+					}
+				});
+			});
+		}
 	},
 
 	setup_queries: function (frm) {
