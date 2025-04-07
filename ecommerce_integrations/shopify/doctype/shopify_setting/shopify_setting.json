@@ -394,7 +394,8 @@
             "default": "0",
             "fieldname": "enable_bulk_import",
             "fieldtype": "Check",
-            "label": "Enable Bulk Import"
+            "label": "Enable Bulk Import",
+            "description": "Use Shopify's Bulk Operations API for faster product imports"
         }
     ],
     "index_web_pages_for_search": 1,
